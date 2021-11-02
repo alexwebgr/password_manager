@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     file = params[:filename].tempfile
     users = CSV.parse(file, headers: true)
 
-    results = users.map do |user|
+    @results = users.map do |user|
       next unless user['name'] && user['password']
 
       user = User.new({
@@ -33,8 +33,6 @@ class HomeController < ApplicationController
         }
       end
     end
-
-    render json: results, status: :ok
 
   rescue CSV::MalformedCSVError
     render json: { message: 'csv is malformed' }, status: 422

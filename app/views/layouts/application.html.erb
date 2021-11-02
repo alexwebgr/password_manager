@@ -11,28 +11,35 @@
   </head>
 
   <body class="d-flex flex-column h-100">
-  <main class="flex-shrink-0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <%= link_to root_url, class: 'navbar-brand' do %>
-            Password Manager<br />
-            <span class="small text-muted">manage your passwords</span>
-          <% end %>
+    <main class="flex-shrink-0">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <%= link_to root_url, class: 'navbar-brand' do %>
+              Password Manager<br />
+              <span class="small text-muted">manage your passwords</span>
+            <% end %>
+          </div>
         </div>
+      </nav>
+      <div class="container mt-5">
+        <%= yield %>
       </div>
-    </nav>
-    <div class="container mt-5">
-      <%= yield %>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Copyright 2021 | alexwebgr</span>
+      </div>
+    </footer>
+
+    <%= render 'partials/toast_container' %>
+    <div id="toasterSource">
+      <%= render 'partials/toaster_light' %>
+      <%= render 'partials/toaster_success' %>
+      <%= render 'partials/toaster_failure' %>
     </div>
-  </main>
-  <footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-      <span class="text-muted">Copyright 2021 | alexwebgr</span>
-    </div>
-  </footer>
   </body>
 </html>

@@ -1,8 +1,8 @@
-<div class="row">
-  <div class="col-6 offset-3" data-controller="toast">
+<div class="row" data-controller="toast">
+  <div class="col-6 offset-3">
     <h3>Upload file</h3>
 
-    <%= form_with url: home_handle_upload_path, multipart: true, data: { remote: true } do %>
+    <%= form_with url: home_handle_upload_path, multipart: true, data: { action: "ajax:success->toast#onPostSuccess ajax:error->toast#onPostError", remote: true } do %>
       <div class="row">
         <div class="col-10">
           <%= file_field_tag :filename, class: 'form-control', required: true %>
@@ -12,5 +12,20 @@
         </div>
       </div>
     <% end %>
+  </div>
+
+  <div class="col-10 mt-4" id="results">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Result</th>
+        <th scope="col">Name</th>
+        <th scope="col">Password</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
   </div>
 </div>
