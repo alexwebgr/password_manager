@@ -13,7 +13,7 @@ RSpec.describe HomeController, type: :request do
       let(:file) { fixture_file_upload('users.csv', 'text/csv') }
 
       it "returns http success" do
-        post home_handle_upload_url, params: { filename: file }
+        post home_handle_upload_url(format: :js), params: { filename: file }
 
         expect(response).to have_http_status(200)
       end
@@ -57,7 +57,7 @@ RSpec.describe HomeController, type: :request do
 
       it "creates 3 new users" do
         expect {
-          post home_handle_upload_url, params: { filename: file }
+          post home_handle_upload_url(format: :js), params: { filename: file }
         }.to change(User, :count).by(3)
       end
     end
