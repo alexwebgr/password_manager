@@ -46,7 +46,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = ENV["FORCE_SSL"]
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -60,9 +60,11 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "password_manager_production"
+  # config.active_job.queue_name_prefix = "nurl_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: ENV["HOST"] }
+  # config.action_mailer.default_url_options = { host: "localhost:3000" }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
