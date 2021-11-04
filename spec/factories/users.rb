@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
     name { "alex" }
-    password { "MyLongPass" }
+    password { "ValidPass1" }
   end
 end

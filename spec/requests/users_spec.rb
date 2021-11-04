@@ -19,7 +19,7 @@ RSpec.describe "/users", type: :request do
   let(:valid_attributes) {
     {
       name: 'alex',
-      password: 'password_22'
+      password: 'Password22'
     }
   }
 
