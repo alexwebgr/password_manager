@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
 
       it "does not create a user" do
         user.save
-        expect(user.errors.full_messages).to eq ["Password cannot contain three repeating characters in a row"]
+        expect(user.errors.full_messages).to eq ["Password cannot contain three repeating characters in a row, 's' appears 3 times"]
       end
     end
   end

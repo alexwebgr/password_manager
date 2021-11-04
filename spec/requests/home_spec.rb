@@ -10,7 +10,7 @@ RSpec.describe HomeController, type: :request do
 
   describe "POST /handle_upload" do
     describe 'when a valid file is uploaded' do
-      let(:file) { fixture_file_upload('users.csv', 'text/csv') }
+      let(:file) { fixture_file_upload('3_valid_users.csv', 'text/csv') }
 
       it "returns http success" do
         post home_handle_upload_url(format: :js), params: { filename: file }
@@ -53,7 +53,7 @@ RSpec.describe HomeController, type: :request do
     end
 
     describe 'when a file is uploaded with 3 valid users' do
-      let(:file) { fixture_file_upload('users.csv', 'text/csv') }
+      let(:file) { fixture_file_upload('3_valid_users.csv', 'text/csv') }
 
       it "creates 3 new users" do
         expect {

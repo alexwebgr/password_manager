@@ -1,7 +1,8 @@
 <% results.each do |result| %>
   <tr>
-    <td class="<%= result[:success].blank? ? 'bg-danger' : 'bg-success' %>"></td>
+    <td class="<%= result[:errors].empty? ? 'bg-success' : 'bg-danger' %>"></td>
     <td><%= result[:name] %></td>
-    <td><%= result[:message] %></td>
+    <td><%= result[:message]&.html_safe %></td>
+    <td><%= result[:errors]&.html_safe %></td>
   </tr>
 <% end %>
