@@ -1,4 +1,3 @@
-require 'csv'
 class HomeController < ApplicationController
   def index
   end
@@ -10,30 +9,8 @@ class HomeController < ApplicationController
     render json: { message: 'only csv files are supported' }, status: 422 and return if content_type != 'text/csv'
 
     file = params[:filename].tempfile
-    users = CSV.parse(file, headers: true)
 
-    @results = users.map do |user|
-      next unless user['name'] && user['password']
-
-      user = User.new({
-                        name: user['name'],
-                        password: user['password']
-                      })
-
-      if user.save
-        {
-          name: user['name'],
-          message: 'Import was successful',
-          success: true
-        }
-      else
-        {
-          name: user['name'],
-          message: user.errors.full_messages.join("\n")
-        }
-      end
-    end
-
+    @results = UserService.create_users(file)
   rescue CSV::MalformedCSVError
     render json: { message: 'csv is malformed' }, status: 422
   end
