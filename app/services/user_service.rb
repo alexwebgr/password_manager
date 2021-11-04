@@ -28,6 +28,8 @@ class UserService
     str.match(ERROR_FORMAT_REGEX) { |m| ErrorLine.new(*m.captures) }
   end
 
+  public
+
   def determine_chars(errors, password)
     errors.each_with_object([]) do |error, memo|
       memo << 1 if error.match?(/lowercase/)
@@ -38,8 +40,6 @@ class UserService
       memo << parse_error(error).count.to_i - (REPEATING_CHARS - 1) if error.match?(/repeating/)
     end.sum
   end
-
-  public
 
   def create_users
     parse_csv.map do |user|
